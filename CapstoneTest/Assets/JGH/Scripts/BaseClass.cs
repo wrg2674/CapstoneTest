@@ -19,6 +19,18 @@ public abstract class BaseClass : MonoBehaviour
     {
         return R;
     }
+    public virtual void SetV(float value)
+    {
+        V = value;
+    }
+    public virtual void SetI(float value)
+    {
+        I = value;
+    }
+    public virtual void SetR(float value)
+    {
+        R = value;
+    }
     public abstract void Receive();
     public abstract void Give();
 }

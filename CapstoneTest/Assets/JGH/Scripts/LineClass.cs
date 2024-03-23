@@ -9,7 +9,7 @@ public class LineClass : BaseClass
 {
     private List<LineClass> lines = new List<LineClass>(); // 연결된 전선
     public ComponentClass component; //연결된 부품
-    [SerializeField] private AttachClassForLineClass pair; // 전선의 짝
+    [SerializeField] private LineClass pair; // 전선의 짝
 
     private int linkCount = 0;
     public bool isParallel = false;
@@ -29,13 +29,35 @@ public class LineClass : BaseClass
         GameObject obj = other.gameObject;
         if (obj.GetComponent<LineClass>())
         {
-            lines.Add(obj.GetComponent<LineClass>());
+            LineClass line = obj.GetComponent<LineClass>();
+            lines.Add(line);
             linkCount++;
             setIsParallel();
+            if (isParallel)
+            {
+
+            }
+            else
+            {
+                SetR(R + line.GetR());
+                SetV(V + line.GetV());
+            }
+            
         }
-        if (obj.GetComponent<ComponentClass>())
+        if (obj.GetComponent<AttachForComponentClass>())
         {
-            component = obj.GetComponent<ComponentClass>();
+            ComponentClass comp = obj.transform.parent.GetComponent<ComponentClass>();
+            component = comp;
+            if (isParallel)
+            {
+
+            }
+            else
+            {
+                SetV(V + comp.GetV());
+                SetR(R + comp.GetR());
+            }
+            
         }
 
     }
@@ -48,14 +70,33 @@ public class LineClass : BaseClass
             linkCount--;
             setIsParallel();
         }
-        if (obj.GetComponent<ComponentClass>())
+        if (obj.GetComponent<AttachForComponentClass>())
         {
-            component = obj.GetComponent<ComponentClass>();
+            component = null;
         }
+    }
+    public override void SetV(float value)
+    {
+        V = value;
+        pair.V = value;
+        
+    }
+    public override void SetI(float value)
+    {
+        I = value;
+        pair.I = value;
+
+    }
+    public override void SetR(float value)
+    {
+        R = value;
+        pair.R = value;
+
     }
     public override void Receive()
     {
         
+
     }
     public override void Give()
     {
