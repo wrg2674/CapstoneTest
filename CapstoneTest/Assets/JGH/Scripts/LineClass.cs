@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 using MyEnum;
+using JetBrains.Annotations;
 
 // 전선의 양 끝단에 들어갈 클래스
 public class LineClass : BaseClass
@@ -13,7 +14,6 @@ public class LineClass : BaseClass
 
     private int linkCount = 0;
     public bool isParallel = false;
-
     private void setIsParallel()
     {
         if(linkCount > 1) {
@@ -33,30 +33,12 @@ public class LineClass : BaseClass
             lines.Add(line);
             linkCount++;
             setIsParallel();
-            if (isParallel)
-            {
-
-            }
-            else
-            {
-                SetR(R + line.GetR());
-                SetV(V + line.GetV());
-            }
             
         }
         if (obj.GetComponent<AttachForComponentClass>())
         {
             ComponentClass comp = obj.transform.parent.GetComponent<ComponentClass>();
             component = comp;
-            if (isParallel)
-            {
-
-            }
-            else
-            {
-                SetV(V + comp.GetV());
-                SetR(R + comp.GetR());
-            }
             
         }
 

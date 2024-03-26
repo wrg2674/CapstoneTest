@@ -7,6 +7,7 @@ public abstract class BaseClass : MonoBehaviour
     [SerializeField] protected float V; // 전압
     [SerializeField] protected float I; // 전류
     [SerializeField] protected float R; // 저항
+    public bool visit = false;
     public float GetV()
     {
         return V;
