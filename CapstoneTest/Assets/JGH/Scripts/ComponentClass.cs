@@ -1,13 +1,46 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.IO.LowLevel.Unsafe;
 using UnityEngine;
-using MyEnum;
 
-public abstract class ComponentClass : BaseClass
+public class ComponentClass : MonoBehaviour
 {
-    public AttachForComponentClass[] attach = new AttachForComponentClass[2]; // Inspector 창에서 지정해줘야함
+    [SerializeField]protected Attachment[] attachment = new Attachment[2];
+    [SerializeField] protected double R;
+    [SerializeField] protected double V;
+    [SerializeField] protected double I;
+    protected bool isLine = false;
 
-    public abstract void Do();
-    public override abstract void Receive();
-    public override abstract void Give();
+    public virtual void Do()
+    {
+
+    }
+    public void SetR(double R)
+    {
+        this.R = R;
+    }
+    public void SetV(double V)
+    {
+        this.V = V;
+    }
+    public void SetI(double I) 
+    {  
+        this.I = I;
+    }
+    public double GetR()
+    {
+        return this.R;
+    }
+    public double GetV()
+    {
+        return this.V;
+    }
+    public double GetI() 
+    { 
+        return this.I;
+    }
+    public bool GetIsLine()
+    {
+        return this.isLine;
+    }
 }

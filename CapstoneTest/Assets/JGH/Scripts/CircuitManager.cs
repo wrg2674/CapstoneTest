@@ -5,18 +5,14 @@ using UnityEngine;
 
 public class CircuitManager : MonoBehaviour
 {
-    private BaseClass ptr;
-    private BaseClass head;
-    // Start is called before the first frame update
-    void Start()
-    {
-            
-        
-    }
 
-    // Update is called once per frame
-    void Update()
+    private List<float> R = new List<float>();
+    private List<float> V = new List<float>();
+    private List<float> I = new List<float>();
+    
+    public void calcEntireR(ComponentClass root)
     {
-        
+        if (root == null) return;
+
     }
 }
