@@ -4,5 +4,8 @@ using UnityEngine;
 
 public class Line : ComponentClass
 {
-    new private bool isLine = true;
+    public override bool IsLine()
+    {
+        return true;
+    }
 }

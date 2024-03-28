@@ -5,11 +5,10 @@ using UnityEngine;
 
 public class ComponentClass : MonoBehaviour
 {
-    [SerializeField]protected Attachment[] attachment = new Attachment[2];
+    public Attachment[] attachment = new Attachment[2];
     [SerializeField] protected double R;
     [SerializeField] protected double V;
     [SerializeField] protected double I;
-    protected bool isLine = false;
 
     public virtual void Do()
     {
@@ -39,8 +38,8 @@ public class ComponentClass : MonoBehaviour
     { 
         return this.I;
     }
-    public bool GetIsLine()
+    public virtual bool IsLine()
     {
-        return this.isLine;
+        return false;
     }
 }

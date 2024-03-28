@@ -5,8 +5,10 @@ using UnityEngine;
 
 public class Attachment : MonoBehaviour
 {
-    private List<Attachment> links = new List<Attachment>();
+    public List<Attachment> links = new List<Attachment>();
+    [SerializeField] private Attachment pair;
     [SerializeField] private ComponentClass component;
+    
     private int linkSize = 0;
     private bool isParallel = false;
     
@@ -41,5 +43,9 @@ public class Attachment : MonoBehaviour
     public bool GetIsParallel()
     {
         return isParallel;
+    }
+    public Attachment GetPair()
+    {
+        return pair;
     }
 }
